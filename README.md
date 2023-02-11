@@ -1,7 +1,7 @@
 # UBC-Climate-Measurement-And-Analysis
 Data Analysis Final Project and a collection of lab assignments.
 
-Learning Objectives
+### Learning Objectives
 - Conduct science research based on observations and data collected in the class
 - Consider scale and scale dependence of environmental phenomena, and how those are reflected in environmental information.
 - Appreciate the effort, potential errors and problems in collecting long-term environmental time series.
