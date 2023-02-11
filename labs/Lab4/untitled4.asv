@@ -1,0 +1,70 @@
+% Lab 4
+clear
+% loading the data for this lab
+data=xlsread('STRATOGEM_plankton.xls');
+STRATOGEMplankton = data(:,2:end);
+Date = data(:,1);
+
+% Part 2
+sumrow = nansum(STRATOGEMplankton,2);
+subplot(2,1,1)
+plot(Date,sumrow)
+xlabel('Date')
+ylabel('Plankton Counts')
+title('Total Planktonplankton Counts Time Series 2002-2005 (Linear Scale)')
+% Plot created
+subplot(2,1,2)
+plot(Date,sumrow)
+set(gca, 'yscale','log')
+xlabel('Date')
+ylabel('Phytoplankton Counts')
+title('Total Phytoplankton Count Time Series 2002-2005 (Log Scale)')
+
+% Part 3 in shannonWiener.m
+
+% Part 4
+% calculating the index per date
+swIndex = zeros(51,1);
+for j=1:51
+    swIndex(j) = shannonWiener(STRATOGEMplankton(j,:));
+end
+% Plot the sw Index vs Date
+figure(2)
+plot(Date,swIndex)
+xlabel('Shannon-Wiener Index')
+ylabel('Date')
+title('Shannon-Wiener Diversity Index in the Straight of Georgia 2002-2005')
+
+
+% Part 5 calculate the sw-index 
+date = datevec(Date);
+year=date(:,1);
+year_2003 = Date(year == 2003);
+year_2004 = Date(year == 2004);
+count_2003 = sumrow(year == 2003);
+count_2004 = sumrow(year == 2004);
+SW2003 = swIndex(year == 2003);
+SW2004 = swIndex(year == 2004);
+
+figure(3)
+subplot(2,1,1)
+plot(year_2003,count_2003)
+xlabel('Date')
+ylabel('Total phytoplakton count of all species')
+title('Total phytoplankton Count of all species in 2003')
+datetick('x','mm-yyyy')
+
+subplot(2,1,2)
+plot(year_2003, SW2003)
+xlabel('Date')
+ylabel('Shannon-Wiener Diversity Index')
+datetick('x','mm-yyyy')
+title('SW Diversity Index in the Strait of Georgia in Year 2003')
+saveas(gcf,'lab4_Q5a.jpg')
+
+figure(4)
+subplot(2,1,1)
+plot(year_2004, count_2004)
+
+
+

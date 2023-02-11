@@ -1,0 +1,151 @@
+% Lab 3
+clear
+% loading the data for this lab
+data=xlsread('lab3_data.xlsx');
+% Create a vector of monthly dates
+dates = data(:,1);
+
+% ***** Section 1 *****
+
+% Create vectors for variables:
+UBC_avg_temp_monthly_anom = data(:,2);
+CRU_avg_temp_monthly_anom = data(:,3);
+TSI_time_series = data(:,4);
+AOD = data(:,5);
+Atmos_CO2_concentration = data(:,6);
+Anthro_SO2_emissions = data(:,7);
+MEI = data(:,8);
+
+% Plot each times series in subplots
+subplot(4,2,1);
+plot(dates, UBC_avg_temp_monthly_anom);
+title('UBC temperature anomaly (1961 - 2016)')
+xlabel('Years')
+ylabel('Air Temperature (Celsius)')
+[b,bint,r,rint,stats]=regress(UBC_avg_temp_monthly_anom,[ones(size(UBC_avg_temp_monthly_anom)) dates]); 
+MeanTemp1 = b(2)*dates + b(1);
+hold on
+plot(dates,MeanTemp1,'r')
+%include lengend...
+
+subplot(4,2,2);
+plot(dates, CRU_avg_temp_monthly_anom);
+title('Global Mean Temperature Anomaly (1950 - 2016)')
+xlabel('Years')
+ylabel('Air Temperature (Celsius)')
+[b,bint,r,rint,stats]=regress(CRU_avg_temp_monthly_anom,[ones(size(CRU_avg_temp_monthly_anom)) dates]); 
+MeanTemp2 = b(2)*dates + b(1);
+hold on
+plot(dates,MeanTemp2,'r')
+%...
+
+subplot(4,2,3);
+plot(dates, TSI_time_series);
+title('Total Solar Irradiance (TSI) (1950 - 2016)')
+xlabel('Years')
+ylabel('Solar Energy (W/m^2)')
+%...
+
+subplot(4,2,4);
+plot(dates, AOD);
+title('Global Mean Stratospheric Aerosol Optical Depth (AOD) (1950 - 2016)')
+xlabel('Years')
+ylabel('Aerosol Optical Depth')
+%...
+
+subplot(4,2,5);
+plot(dates, Atmos_CO2_concentration);
+title('Atmospheric CO2 concentration (1950 - 2016)')
+xlabel('Years')
+ylabel('Atmospheric CO2 Concentration (ppm)')
+%...
+
+subplot(4,2,6);
+plot(dates, Anthro_SO2_emissions);
+title('Anthropogenic SO2 Emissions (1950 - 2016)')
+xlabel('Years')
+ylabel('Anthropogenic SO2 Emissions (Tg/year)')
+%...
+
+subplot(4,2,7);
+plot(dates, MEI);
+title('Multivariat ENSO Index (MEI) (1950 - 2016)')
+xlabel('Years')
+ylabel('Multivariat ENSO Index')
+%...
+
+% Display Histograms
+figure(2)
+subplot(2,1,1)
+histogram(UBC_avg_temp_monthly_anom(1:384),linspace(min(UBC_avg_temp_monthly_anom),max(UBC_avg_temp_monthly_anom),35),'Normalization','probability')
+hold on
+histogram(UBC_avg_temp_monthly_anom(385:804),linspace(min(UBC_avg_temp_monthly_anom),max(UBC_avg_temp_monthly_anom),35),'Normalization','probability')
+title('Frequency of UBC Temperature Anomaly 1950-1985 and 1985-2016')
+xlabel('UBC Temperature Anomoly (C)')
+ylabel('Frequency of Occurrence')
+legend('1950-1985','1986-2016')
+
+subplot(2,1,2)
+histogram(CRU_avg_temp_monthly_anom(1:384),linspace(min(CRU_avg_temp_monthly_anom),max(CRU_avg_temp_monthly_anom),35),'Normalization','probability')
+hold on
+histogram(CRU_avg_temp_monthly_anom(385:804),linspace(min(CRU_avg_temp_monthly_anom),max(CRU_avg_temp_monthly_anom),35),'Normalization','probability')
+title('Frequency of Global Mean Temperature Anomaly 1950-1985 and 1985-2016')
+xlabel('Global Mean Temperature Anomoly (C)')
+ylabel('Frequency of Occurrence')
+legend('1950-1985','1986-2016')
+
+% ***** Section 2 *****
+% Answer on Lab3 worksheet
+
+% ***** Section 3 *****
+% Plot UBC temperature anomaly vs Global Mean Temperature Anomaly
+figure(3)
+scatter(UBC_avg_temp_monthly_anom, CRU_avg_temp_monthly_anom, 'ko')
+title('UBC Temperature Anomaly and Global Mean Temperature Anomaly Scatter Plot from 1950-2016')
+xlabel('UBC Temperature Anomaly (C)')
+ylabel('Global Mean Temperature Anomaly (C)')
+stats = regstats(UBC_avg_temp_monthly_anom,CRU_avg_temp_monthly_anom);
+
+% ***** Section 4 *****
+
+% Perform regression of Global Mean Temp against TSI, AOD, CO2, SO2 and MEI
+% Which variable is there a large confidence on the sign of the linear
+% regression slope?
+
+% Plot Global Mean Temperature anomaly vs MEI and UBC Temperature Anomaly vs MEI
+% Perform linear regression for each pair; add regression line and slope
+figure(4)
+subplot(2,1,1)
+mlr = fitlm(MEI,UBC_avg_temp_monthly_anom);
+plot(mlr)
+title('UBC Temperature Anomaly vs MEI 1950-2016')
+xlabel('MEI')
+ylabel('UBC Temperature Anomaly (C)')
+
+subplot(2,1,2)
+mlr = fitlm(MEI,CRU_avg_temp_monthly_anom);
+plot(mlr)
+%{
+This code also works but NOT using it:
+scatter(MEI,CRU_avg_temp_monthly_anom,'kx')
+[b,bint,r,rint,stats] = regress(CRU_avg_temp_monthly_anom,[ones(size(CRU_avg_temp_monthly_anom)) MEI]);
+RegCRU = b(2)*MEI+b(1);
+hold on
+plot(MEI,RegCRU,'r')
+%}
+title('Global Mean Temperature Anomaly vs MEI 1950-2016')
+xlabel('MEI')
+ylabel('Global Mean Temperature Anomaly (C)')
+
+% ***** Section 5 *****
+
+% 5 Forcing variables: TSI, AOD, CO2, SO2 and MEI
+% Multilinear regression of Global Mean Temperature Anomaly against the 5 variables
+figure(5)
+x = [TSI_time_series, AOD, Atmos_CO2_concentration, Anthro_SO2_emissions, MEI];
+mlr = fitlm(x,CRU_avg_temp_monthly_anom);
+plot(mlr)
+title('Predicted Temperature from Five Explanatory Variables 1950-2016')
+xlabel('5 Explanatory Variables (TSI, AOD, CO2, SO2, MEI)')
+ylabel('Global Mean Temperature Anomaly (C)')
+

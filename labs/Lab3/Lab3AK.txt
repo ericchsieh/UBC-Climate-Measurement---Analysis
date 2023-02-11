@@ -1,0 +1,29 @@
+Lab3 Answers
+
+1b)
+The UBC temperature anomaly has a slope of 0.47 and y-intercept of 0.47, and oscillates in a period of about 3 years. The maximum and minimum anomaly observed through 1960-2016 is about 5.0C and -3.0C. The mean global temperature anomaly shows a slope of 0.24 and y-intercept of 0.24, and oscillates in a period of about 5 years. The maximum and minimum anomaly observed through 1950-2016 is about 1.1C and -0.4C.
+
+c)
+Yes, the term global warming is appropriate to describe the temperature time series because the anomalies are increasing overtime. With a value of 0.5 C increase of average global temperature is significant. The trends on both UBC and global mean temperature graphs shows a clear positive slope, so we can be sure to assume the significance of global warming effects.
+
+d) 
+From observation there is a peak in temperature from oscillation every 3-5 years, this can very possible be associated with natural fluctuations. Some variable I would like to observe are Earth's orbital behaviours as it wobbles on its axis, the sun's temperature throughout the decades, and regular volcanic activities. There are some frequencies that follows a natural pattern, and it will have an effect on the data collected for temperature anomalies. 
+
+3a)
+In similarity the temperature anomalies experience a positive trend, meaning the warming of Earth, which indicates global warming. There is a difference in seasonal variables as experienced at UBC, and the amount of sunlight is difference for each regions so they will experience different patterns of temperature fluctuations.
+
+4b) 
+Linear and multilinear regression are not always compatible because for linear regression only one x and y variable is used. From the data collected, the global temperature anomaly usually has only one x and y variable, so in this case linear regression is more accurate than multilinear regression.
+
+c) 
+A few of the slope does not match my expectations. When looking at the greenhouse gas contents, we are expecting positive slopes which gives an indication of global warming. For instance, we are expecting to a positive slope with one of the SO2 concentration, but instead we get a negative slope in the multilinear regression.
+
+d) 
+The results of my regression is compatible with such projections, because from analysis we are seeing a steady postive trend throughout the years. Other forces that play a factor could be ozone, albedo, and aerosol levels. These variable would have a positive forcing. I could not find a disagreement because the positive forces are over powering the negative forces.
+
+6a)
+When it comes to complex problems, a linear regression may not be a suitable analysis because it could over simplify relationships. Such regression analysis has its limitation, it makes the assumption that the two variables are in linear relationship, which makes it ideal to showcase positive or negative trends in data.
+
+
+
+

@@ -1,0 +1,17 @@
+linear regression best fit line
+
+% Linear regression of the temperature time series vs time:
+% y = a + bx; slope = coeff = b; y-intercept = a;
+% best fit line y=0.01956*x-38.6
+%[coef,bint,r,rint,stats] = regress(dates,UBC_avg_temp_monthly_anom);
+
+figure(2);
+scatter(dates, UBC_avg_temp_monthly_anom);
+dates = dates';
+UBC_avg_temp_monthly_anom = UBC_avg_temp_monthly_anom';
+P = polyfit(dates, UBC_avg_temp_monthly_anom, 1);
+yfit = P(1)*dates+P(2);
+hold on;
+plot(dates, yfit,'r-.');
+
+% where P(1) is the slope and P(2) is the intercept

@@ -1,0 +1,18 @@
+
+LAB 3 - Notes
+
+
+R^2 = 0
+Information about x, give you no information about y
+
+MATLAB regression function
+-> help regress
+
+coefficient responding to the line
+-> a0 = coef(1)
+   a1 = coef(2)
+temp_ubc_pred = a0 + a1 + date;
+figure
+plot(date,ubcanom)
+hold on 
+plot(date, temp_ubc_pred)
