@@ -13,7 +13,7 @@ Data Analysis Final Project and a collection of lab assignments.
 - Work effectively as part of a group
 
 
-## Final Project
+# Final Project
 #### Topic: 
 "Correlation Analysis of ENSO Effects on Sea Surface Temperature and Ocean pH: A Comparative Study of the Pacific and Atlantic Oceans (1989-2014)"
 
