@@ -14,7 +14,8 @@ Data Analysis Final Project and a collection of lab assignments.
 
 
 ## Final Project
-#### Topic: "Correlation Analysis of ENSO Effects on Sea Surface Temperature and Ocean pH: A Comparative Study of the Pacific and Atlantic Oceans (1989-2014)"
+#### Topic: 
+"Correlation Analysis of ENSO Effects on Sea Surface Temperature and Ocean pH: A Comparative Study of the Pacific and Atlantic Oceans (1989-2014)"
 
 #### Key Points
 - El Niño and La Niña Impacts: El Niño typically causes warming of surface waters and a reduction in nutrient-rich upwelling, while La Niña results in cooler surface temperatures. Both phenomena affect marine ecosystems, which is why understanding their impact on SST and pH is crucial.
