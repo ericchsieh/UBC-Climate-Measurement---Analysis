@@ -1,4 +1,4 @@
-# UBC-Climate-Measurement-And-Analysis-(EOSC 442)
+# Climate-Measurement-And-Analysis (UBC, EOSC 442)
 Data Analysis Final Project and a collection of lab assignments.
 
 ### Learning Objectives
